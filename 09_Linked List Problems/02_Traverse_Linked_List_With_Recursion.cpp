@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+class Node { // User Defined Data Type
+public:
+    int val;
+    Node* next;
+    Node(int val) {
+        this->val = val;
+        next = NULL;
+    }
+};
+void printRec(Node* head) {
+    if (head == NULL) return;
+    cout << head->val << " ";
+    printRec(head->next);
+}
+void printReverseRec(Node* head) {
+    if (head == NULL) return;
+    printReverseRec(head->next);
+    cout << head->val << " ";
+}
+int main() {
+    Node* a = new Node(7); // head
+    Node* b = new Node(0);
+    Node* c = new Node(1);
+    Node* d = new Node(8);
+    Node* e = new Node(2);
+
+    // Attaching Nodes
+    a->next = b;
+    b->next = c;
+    c->next = d;
+    d->next = e;
+
+    printRec(a);
+    cout << endl;
+    printReverseRec(a);
+}
